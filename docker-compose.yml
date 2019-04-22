@@ -1,0 +1,70 @@
+version: '2'
+services:
+  ectd1:
+    image: nuaays/etcd:v3.3.12
+    hostname: etcd1
+    environment:
+      ETCD_NAME: etcd1
+      ETCD_ADVERTISE_CLIENT_URLS: http://172.31.3.128:2379
+      ETCD_INITIAL_ADVERTISE_PEER_URLS: http://172.31.3.128:2380
+      ETCD_INITIAL_CLUSTER: etcd1=http://172.31.3.128:2380,etcd2=http://172.31.3.129:2380,etcd3=http://172.31.3.130:2380
+      ETCD_LISTEN_CLIENT_URLS: http://0.0.0.0:2379
+      ETCD_LISTEN_PEER_URLS: http://0.0.0.0:2380
+      ETCD_INITIAL_CLUSTER_STATE: new
+      ETCD_INITIAL_CLUSTER_TOKEN: xcloud
+      ETCD_DATA_DIR: /data
+      ETCDCTL_API: '3'
+      TZ: Asia/Shanghai
+    volumes:
+    - /etc/localtime:/usr/share/zoneinfo/Asia/Shanghai:ro
+    ports:
+    - 2379:2379/tcp
+    - 2380:2380/tcp
+    labels:
+      io.rancher.scheduler.affinity:host_label: host_ip=172.31.3.128
+
+  ectd2:
+    image: nuaays/etcd:v3.3.12
+    hostname: etcd2
+    environment:
+      ETCD_NAME: etcd2
+      ETCD_ADVERTISE_CLIENT_URLS: http://172.31.3.129:2379
+      ETCD_INITIAL_ADVERTISE_PEER_URLS: http://172.31.3.129:2380
+      ETCD_INITIAL_CLUSTER: etcd1=http://172.31.3.128:2380,etcd2=http://172.31.3.129:2380,etcd3=http://172.31.3.130:2380
+      ETCD_LISTEN_CLIENT_URLS: http://0.0.0.0:2379
+      ETCD_LISTEN_PEER_URLS: http://0.0.0.0:2380
+      ETCD_INITIAL_CLUSTER_STATE: new
+      ETCD_INITIAL_CLUSTER_TOKEN: xcloud
+      ETCD_DATA_DIR: /data
+      ETCDCTL_API: '3'
+      TZ: Asia/Shanghai
+    volumes:
+    - /etc/localtime:/usr/share/zoneinfo/Asia/Shanghai:ro
+    ports:
+    - 2379:2379/tcp
+    - 2380:2380/tcp
+    labels:
+      io.rancher.scheduler.affinity:host_label: host_ip=172.31.3.129
+
+  ectd3:
+    image: nuaays/etcd:v3.3.12
+    hostname: etcd3
+    environment:
+      ETCD_NAME: etcd3
+      ETCD_ADVERTISE_CLIENT_URLS: http://172.31.3.130:2379
+      ETCD_INITIAL_ADVERTISE_PEER_URLS: http://172.31.3.130:2380
+      ETCD_INITIAL_CLUSTER: etcd1=http://172.31.3.128:2380,etcd2=http://172.31.3.129:2380,etcd3=http://172.31.3.130:2380
+      ETCD_LISTEN_CLIENT_URLS: http://0.0.0.0:2379
+      ETCD_LISTEN_PEER_URLS: http://0.0.0.0:2380
+      ETCD_INITIAL_CLUSTER_STATE: new
+      ETCD_INITIAL_CLUSTER_TOKEN: xcloud
+      ETCD_DATA_DIR: /data
+      ETCDCTL_API: '3'
+      TZ: Asia/Shanghai
+    volumes:
+    - /etc/localtime:/usr/share/zoneinfo/Asia/Shanghai:ro
+    ports:
+    - 2379:2379/tcp
+    - 2380:2380/tcp
+    labels:
+      io.rancher.scheduler.affinity:host_label: host_ip=172.31.3.130
