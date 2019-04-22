@@ -1,0 +1,11 @@
+version: '2'
+services:
+  ectd1:
+    scale: 1
+    start_on_create: true
+  ectd2:
+    scale: 1
+    start_on_create: true
+  ectd3:
+    scale: 1
+    start_on_create: true
