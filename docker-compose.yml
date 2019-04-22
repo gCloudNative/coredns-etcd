@@ -12,8 +12,14 @@ services:
       ETCD_LISTEN_PEER_URLS: http://0.0.0.0:2380
       ETCD_INITIAL_CLUSTER_STATE: new
       ETCD_INITIAL_CLUSTER_TOKEN: xcloud
-      ETCD_DATA_DIR: /data
+      ETCD_DATA_DIR: /data-etcd
+      ETCD_WAL_DIR: /data-wal
+      ETCD_MAX_WALS: 5
+      ETCD_HEARTBEAT_INTERVAL: 100
+      ETCD_ELECTION_TIMEOUT: 1000
+      ETCD_SNAPSHOT_COUNT: 5000
       ETCDCTL_API: '3'
+      ETCD_ENABLE_V2: true
       TZ: Asia/Shanghai
     volumes:
     - /etc/localtime:/usr/share/zoneinfo/Asia/Shanghai:ro
@@ -35,8 +41,14 @@ services:
       ETCD_LISTEN_PEER_URLS: http://0.0.0.0:2380
       ETCD_INITIAL_CLUSTER_STATE: new
       ETCD_INITIAL_CLUSTER_TOKEN: xcloud
-      ETCD_DATA_DIR: /data
+      ETCD_DATA_DIR: /data-etcd
+      ETCD_WAL_DIR: /data-wal
+      ETCD_MAX_WALS: 5
+      ETCD_HEARTBEAT_INTERVAL: 100
+      ETCD_ELECTION_TIMEOUT: 1000
+      ETCD_SNAPSHOT_COUNT: 5000
       ETCDCTL_API: '3'
+      ETCD_ENABLE_V2: true
       TZ: Asia/Shanghai
     volumes:
     - /etc/localtime:/usr/share/zoneinfo/Asia/Shanghai:ro
@@ -58,8 +70,14 @@ services:
       ETCD_LISTEN_PEER_URLS: http://0.0.0.0:2380
       ETCD_INITIAL_CLUSTER_STATE: new
       ETCD_INITIAL_CLUSTER_TOKEN: xcloud
-      ETCD_DATA_DIR: /data
+      ETCD_DATA_DIR: /data-etcd
+      ETCD_WAL_DIR: /data-wal
+      ETCD_MAX_WALS: 5
+      ETCD_HEARTBEAT_INTERVAL: 100
+      ETCD_ELECTION_TIMEOUT: 1000
+      ETCD_SNAPSHOT_COUNT: 5000
       ETCDCTL_API: '3'
+      ETCD_ENABLE_V2: true
       TZ: Asia/Shanghai
     volumes:
     - /etc/localtime:/usr/share/zoneinfo/Asia/Shanghai:ro
@@ -68,3 +86,4 @@ services:
     - 2380:2380/tcp
     labels:
       io.rancher.scheduler.affinity:host_label: host_ip=172.31.3.130
+
