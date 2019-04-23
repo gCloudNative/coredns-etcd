@@ -1,5 +1,27 @@
 version: '2'
 services:
+  coredns:
+    image: coredns/coredns:1.5.0
+    environment:
+      TZ: Asia/Shanghai
+    stdin_open: true
+    network_mode: bridge
+    volumes:
+    - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime:ro
+    - /data/Corefile:/etc/coredns/Corefile:ro
+    tty: true
+    ports:
+    - 53:53/tcp
+    - 53:53/udp
+    command:
+    - -conf
+    - /etc/coredns/Corefile
+    labels:
+      io.rancher.scheduler.affinity:host_label: host_ip=172.31.10.4
+      io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+      io.rancher.container.hostname_override: container_name
+      io.rancher.container.pull_image: always
+
   ectd1:
     image: nuaays/etcd:v3.3.12
     hostname: etcd1
@@ -86,4 +108,3 @@ services:
     - 2380:2380/tcp
     labels:
       io.rancher.scheduler.affinity:host_label: host_ip=172.31.3.130
-
