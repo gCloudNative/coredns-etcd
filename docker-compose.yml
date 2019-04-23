@@ -49,15 +49,16 @@ services:
       ETCD_INITIAL_CLUSTER_TOKEN: xcloud
       ETCD_DATA_DIR: /data-etcd
       ETCD_WAL_DIR: /data-wal
-      ETCD_MAX_WALS: 5
-      ETCD_HEARTBEAT_INTERVAL: 100
-      ETCD_ELECTION_TIMEOUT: 1000
-      ETCD_SNAPSHOT_COUNT: 5000
+      ETCD_MAX_WALS: '5'
+      ETCD_HEARTBEAT_INTERVAL: '100'
+      ETCD_ELECTION_TIMEOUT: '1000'
+      ETCD_SNAPSHOT_COUNT: '5000'
       ETCDCTL_API: '3'
-      ETCD_ENABLE_V2: true
+      ETCD_ENABLE_V2: 'true'
       TZ: Asia/Shanghai
     volumes:
     - /etc/localtime:/usr/share/zoneinfo/Asia/Shanghai:ro
+    - /etc/timezone:/etc/timezone:ro
     ports:
     - 2379:2379/tcp
     - 2380:2380/tcp
@@ -87,6 +88,7 @@ services:
       TZ: Asia/Shanghai
     volumes:
     - /etc/localtime:/usr/share/zoneinfo/Asia/Shanghai:ro
+    - /etc/timezone:/etc/timezone:ro
     ports:
     - 2379:2379/tcp
     - 2380:2380/tcp
@@ -116,8 +118,10 @@ services:
       TZ: Asia/Shanghai
     volumes:
     - /etc/localtime:/usr/share/zoneinfo/Asia/Shanghai:ro
+    - /etc/timezone:/etc/timezone:ro
     ports:
     - 2379:2379/tcp
     - 2380:2380/tcp
     labels:
       io.rancher.scheduler.affinity:host_label: host_ip=172.31.3.130
+
