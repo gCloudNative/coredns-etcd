@@ -69,6 +69,10 @@ dig -t SRV @172.31.3.130 +short www.senyang.com
 
 
 ## 参考
+
 https://www.cnblogs.com/itzgr/p/9920910.html
 
+https://www.cnblogs.com/mafeng/p/10291891.html
+
+https://www.cnblogs.com/leffss/p/10148507.html
 
