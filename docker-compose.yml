@@ -2,20 +2,33 @@ version: '2'
 services:
   coredns:
     image: coredns/coredns:1.5.0
+    hostname: coredns
     environment:
       TZ: Asia/Shanghai
     stdin_open: true
+    tty: true
     network_mode: bridge
     volumes:
     - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime:ro
+    - /etc/timezone:/etc/timezone:ro
     - /data/Corefile:/etc/coredns/Corefile:ro
-    tty: true
     ports:
     - 53:53/tcp
     - 53:53/udp
     command:
     - -conf
     - /etc/coredns/Corefile
+    mem_reservation: 268435456
+    mem_limit: 1073741824
+    cap_add:
+    - NET_ADMIN
+    - NET_BIND_SERVICE
+    cap_drop:
+    - SYS_ADMIN
+    restart: always
+    privileged: false
+    logging:
+      driver: json-file
     labels:
       io.rancher.scheduler.affinity:host_label: host_ip=172.31.10.4
       io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
