@@ -34,8 +34,9 @@ EOF
 
 
 ## Launch ETCD and CoreDNS on Rancher
-docker-compose.yml
-rancher-compose.yml
+ [docker-compose.yml](https://github.com/gCloudNative/coredns-etcd/blob/master/docker-compose.yml)
+  and 
+ [rancher-compose.yml](https://github.com/gCloudNative/coredns-etcd/blob/master/rancher-compose.yml)
 
 
 ## 测试
