@@ -39,6 +39,8 @@ EOF
  [rancher-compose.yml](https://github.com/gCloudNative/coredns-etcd/blob/master/rancher-compose.yml)
 
 
+![CoreDNS-ETCD](https://github.com/gCloudNative/coredns-etcd/blob/master/WX20190423-223404%402x.png)
+
 ## 测试
 
 #### A记录
