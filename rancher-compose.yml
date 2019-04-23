@@ -3,6 +3,15 @@ services:
   coredns:
     scale: 1
     start_on_create: true
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 53
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 2000
+      strategy: recreate
+      reinitializing_timeout: 60000
   ectd1:
     scale: 1
     start_on_create: true
