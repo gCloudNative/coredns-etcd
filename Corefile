@@ -1,0 +1,16 @@
+.:53 {
+    etcd senyang.com {
+        stubzones
+        path /skydns
+        endpoint http://172.31.3.128:2379 http://172.31.3.129:2379 http://172.31.3.130:2379
+        upstream /etc/resolv.conf
+        fallthrough
+    }
+    prometheus
+    cache 160
+    loadbalance
+    forward . 8.8.8.8:53 8.8.4.4:53 /etc/resolv.conf
+    log
+    errors
+    debug
+}
